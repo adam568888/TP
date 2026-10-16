@@ -1,32 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>page des projets</title>
+    <meta charset="UTF-8">
+    <title>TP - 5 boutons JavaScript</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<h1>page des projets</h1>
-    <br>
-    <a href="frame.html">Projet 3 </a>
-    <br>
-    <a href="tp02administrateur.pdf">Projet 4 </a>
-    <br>
-    <a href="inscri.html">Projet 5 </a>
-	<br>
-	<a href="tp02administrateur.pdf">Projet 6 </a>
-	<br>
-	<a href="tp7.html">Projet 7</a>
-	<br>
-	<a href="projet8.html">Projet 8</a>
-	<br>
-	<a href="projet9.html">Projet 9</a>
-	<br>
-	<a href="projet10.html">Projet 10</a>
-	<br>
-	<a href="index.html">retour à la page principale </a>
-	
-	
-	
+    <h1>Ma page interactive</h1>
+
+    <div class="boutons">
+        <button id="btn1" onclick="direBonjour()">Dire bonjour</button>
+        <button id="btn2" onclick="afficherDate()">Afficher la date</button>
+        <button id="btn3" onclick="changerCouleur()">Changer la couleur</button>
+        <button id="btn4" onclick="nombreAleatoire()">Nombre aléatoire</button>
+        <button id="btn5" onclick="effacer()">Effacer</button>
+        <button id="btn6" onclick="verif_age()">Vérifier l'âge</button>
+
+    </div>
+
+    <div id="affichage">
+        <p id="message">Cliquez sur un bouton.</p>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
