@@ -53,3 +53,14 @@ function verif_age() {
     }
 }
 
+function calculNotes() {
+    var note1 = Number(prompt("Entrez la première note :"));
+    var note2 = Number(prompt("Entrez la deuxième note :"));
+    var note3 = Number(prompt("Entrez la troisième note :"));
+
+    var somme = note1 + note2 + note3;
+    var moyenne = somme / 3;
+
+    document.getElementById("message").textContent =
+        "Somme : " + somme + " | Moyenne : " + moyenne.toFixed(2);
+}
