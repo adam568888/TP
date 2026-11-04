@@ -60,7 +60,7 @@ function somme()
 }
 function parite()
 {
-    var x = document.getElementById("parite").value
+    var x = document.getElementById("t1").value
     if (x % 2 ==0){
         document.getElementById("parite").value = " Paire "
     }
