@@ -1,14 +1,16 @@
-*/* --- Variables de couleurs et polices --- */
+/* --- Variables de couleurs et polices --- */
 :root {
-  --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  --card-bg: #ffffff;
-  --text-color: #2d3748;
+  --bg-gradient: linear-gradient(135deg, #1a1c29 0%, #0d1b2a 100%);
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --text-main: #ffffff;
+  --text-muted: #a0aec0;
   --primary: #ff3366;
   --secondary: #7928ca;
   --accent: #00dfd8;
 }
 
-/* --- Reset de base --- */
+/* --- Reset & Styles globaux --- */
 * {
   margin: 0;
   padding: 0;
@@ -19,25 +21,14 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   min-height: 100vh;
   background: var(--bg-gradient);
-  color: var(--text-color);
+  color: var(--text-main);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 3rem 1.5rem;
 }
 
-/* --- Conteneur principal --- */
-.container {
-  width: 100%;
-  max-width: 800px;
-  background: var(--card-bg);
-  padding: 3rem;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* --- Animations fluides --- */
+/* --- Animation d'apparition --- */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -51,54 +42,82 @@ body {
 
 @keyframes pulseGlow {
   0% {
-    box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.4);
+    box-shadow: 0 0 0 0 rgba(0, 223, 216, 0.4);
   }
   70% {
-    box-shadow: 0 0 0 15px rgba(255, 51, 102, 0);
+    box-shadow: 0 0 0 12px rgba(0, 223, 216, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(255, 51, 102, 0);
+    box-shadow: 0 0 0 0 rgba(0, 223, 216, 0);
   }
 }
 
-/* --- Titre avec dégradé de texte --- */
+/* --- Titre principal avec dégradé --- */
 h1 {
-  font-size: 3rem;
+  font-size: 2.8rem;
   font-weight: 800;
-  margin-bottom: 1rem;
-  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  margin-bottom: 2.5rem;
+  text-align: center;
+  background: linear-gradient(45deg, var(--accent), var(--primary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: fadeIn 1s ease-out;
+  animation: fadeIn 0.8s ease-out;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-p {
+/* --- Transformation des liens en grille de cartes stylées --- */
+/* On cible tous les liens du body */
+body > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 450px;
+  margin: 0.75rem auto;
+  padding: 1.25rem 2rem;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  color: var(--text-main);
   font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
-  color: #4a5568;
-}
-
-/* --- Bouton animé --- */
-.btn-neon {
-  display: inline-block;
-  background: linear-gradient(45deg, var(--primary), var(--secondary));
-  color: white;
-  font-weight: bold;
-  padding: 1rem 2.5rem;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
+  font-weight: 600;
   text-decoration: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: pulseGlow 2s infinite;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: fadeIn 1s ease-out backwards;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-.btn-neon:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 10px 25px rgba(255, 51, 102, 0.4);
+/* Retrait des balises <br> superflues visuellement puisque les liens ont des marges */
+body > br {
+  display: none;
 }
 
-.btn-neon:active {
-  transform: translateY(1px);
+/* --- Effets au survol des cartes --- */
+body > a:hover {
+  transform: translateY(-5px) scale(1.02);
+  background: linear-gradient(135deg, rgba(255, 51, 102, 0.15), rgba(121, 40, 202, 0.15));
+  border-color: var(--primary);
+  color: #fff;
+  box-shadow: 0 15px 30px rgba(255, 51, 102, 0.2);
+  animation: pulseGlow 1.5s infinite;
 }
+
+body > a:active {
+  transform: translateY(-1px);
+}
+
+/* --- Décalage subtil de l'animation pour chaque lien (effet cascade) --- */
+body > a:nth-child(3) { animation-delay: 0.1s; }
+body > a:nth-child(5) { animation-delay: 0.15s; }
+body > a:nth-child(7) { animation-delay: 0.2s; }
+body > a:nth-child(9) { animation-delay: 0.25s; }
+body > a:nth-child(11) { animation-delay: 0.3s; }
+body > a:nth-child(13) { animation-delay: 0.35s; }
+body > a:nth-child(15) { animation-delay: 0.4s; }
+body > a:nth-child(17) { animation-delay: 0.45s; }
+body > a:nth-child(19) { animation-delay: 0.5s; }
+body > a:nth-child(21) { animation-delay: 0.55s; }
+body > a:nth-child(23) { animation-delay: 0.6s; }
+body > a:nth-child(25) { animation-delay: 0.65s; }
